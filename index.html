@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Launch Page</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <img src="./images/logo.png" class="Logo">
+        <div class="content">
+            <h1>Welcome to <span>Launch</span> Page </h1>
+            <br>
+            <div class="lauch-time">
+                <div>
+                    <h2>10</h2>
+                    <p>Days</p>
+                </div>
+                <div>
+                    <h2>10</h2>
+                    <p>Hour</p>
+                </div>
+                <div>
+                    <h2>10</h2>
+                    <p>Min</p>
+                </div>
+                <div>
+                    <h2>10</h2>
+                    <p>Sec</p>
+                </div>
+            </div>
+            <br>
+            <p> Click the button below to Learn more</p>
+            
+            <button class="start-button" >Learn More <img src="./images/triangle.png" alt=""></button>
+            <img src="./images/rocket.png" alt="" class="rocket">
+    </div>
+    <script>
+        var countdownDate = new Date("Dec 31, 2025 23:59:59").getTime();
+        var x=setInterval(function() {
+            var now = new Date().getTime();
+            var distance = countdownDate - now;
+
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.querySelector(".lauch-time div:nth-child(1) h2").innerHTML = days;
+            document.querySelector(".lauch-time div:nth-child(2) h2").innerHTML = hours;
+            document.querySelector(".lauch-time div:nth-child(3) h2").innerHTML = minutes;
+            document.querySelector(".lauch-time div:nth-child(4) h2").innerHTML = seconds;
+
+            if (distance < 0) {
+                clearInterval(x);
+                document.querySelector(".lauch-time").innerHTML = "Launched!";
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
